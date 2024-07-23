@@ -32,18 +32,6 @@ Dalam industri otomotif, mengidentifikasi jenis sepeda motor secara akurat berda
 ## Penjelasan Dataset, EDA, dan Pemrosesan Fitur Dataset
 
 ### Penjelasan Dataset
-
-Dataset yang digunakan mencakup informasi tentang sepeda motor dengan fitur-fitur berikut:
-- **model**: Model sepeda motor
-- **tahun**: Tahun pembuatan sepeda motor
-- **harga**: Harga sepeda motor
-- **transmisi**: Jenis transmisi (Manual/Automatic)
-- **odometer**: Jarak tempuh sepeda motor dalam kilometer
-- **jenis**: Jenis sepeda motor (Bebek/Skuter)
-- **pajak**: Biaya pajak sepeda motor
-- **konsumsiBBM**: Konsumsi bahan bakar dalam km/l
-- **mesin**: Kapasitas mesin dalam cc
-
 ```mermaid
 flowchart TD
   A[Muat Dataset] --> B[Pra-pemrosesan Data]
@@ -65,12 +53,23 @@ flowchart TD
   I --> I1[Hitung pentingnya fitur]
   I1 --> I2[Plot pentingnya fitur]
 ```
+Dataset yang digunakan mencakup informasi tentang sepeda motor dengan fitur-fitur berikut:
+- **model**: Model sepeda motor
+- **tahun**: Tahun pembuatan sepeda motor
+- **harga**: Harga sepeda motor
+- **transmisi**: Jenis transmisi (Manual/Automatic)
+- **odometer**: Jarak tempuh sepeda motor dalam kilometer
+- **jenis**: Jenis sepeda motor (Bebek/Skuter)
+- **pajak**: Biaya pajak sepeda motor
+- **konsumsiBBM**: Konsumsi bahan bakar dalam km/l
+- **mesin**: Kapasitas mesin dalam cc
+
 ### Exploratory Data Analysis (EDA)
 
 1. **Visualisasi Distribusi Fitur**: Menggunakan grafik untuk memahami distribusi dan hubungan antar fitur.
 2. **Analisis Korelasi**: Mengidentifikasi hubungan antar fitur dan target.
 
-### Pemrosesan Fitur Dataset
+### Proses Features Dataset
 
 1. **Menambahkan Fitur Baru**:
    - **Usia Sepeda Motor**: Menghitung usia sepeda motor.
@@ -80,7 +79,7 @@ flowchart TD
 
 2. **Encoding Variabel Kategorikal**: Mengubah variabel kategorikal menjadi format numerik.
 
-## Proses Pembelajaran/Pembuatan Model
+## Proses Learning & Modeling
 
 1. **Membagi Data**: Memisahkan data menjadi set pelatihan (80%) dan set pengujian (20%).
 2. **Standarisasi Fitur**: Menggunakan StandardScaler untuk menormalkan fitur.
@@ -148,3 +147,27 @@ plt.xlabel('Predicted')
 plt.ylabel('True')
 plt.show()
 print("Accuracy Score:", accuracy_score(y_test, y_pred))
+```
+## Diskusi Hasil
+
+### Laporan Klasifikasi
+Laporan klasifikasi menyediakan informasi tentang precision, recall, dan F1-score untuk setiap kelas (jenis sepeda motor). Berikut adalah ringkasannya:
+- **Precision**: Mengukur ketepatan prediksi model untuk setiap kelas.
+- **Recall**: Mengukur kemampuan model untuk menemukan semua sampel positif di setiap kelas.
+- **F1-score**: Rata-rata harmonis dari precision dan recall, memberikan gambaran keseluruhan performa model.
+
+### Matriks Kebingungan
+Matriks kebingungan digunakan untuk mengevaluasi kinerja model dengan membandingkan prediksi model dengan nilai aktual. Nilai diagonal dalam matriks menunjukkan jumlah prediksi yang benar, sementara nilai non-diagonal menunjukkan jumlah kesalahan prediksi. Visualisasi ini membantu dalam memahami distribusi kesalahan prediksi model.
+
+### Skor Akurasi
+Skor akurasi model adalah 97.5%, menunjukkan bahwa model memiliki kinerja yang sangat baik dalam memprediksi jenis sepeda motor berdasarkan fitur yang diberikan.
+
+### Pentingnya Fitur
+Visualisasi pentingnya fitur menunjukkan kontribusi masing-masing fitur terhadap prediksi model. Fitur-fitur ini diurutkan berdasarkan tingkat kepentingannya, memberikan wawasan tentang faktor-faktor mana yang paling mempengaruhi prediksi jenis sepeda motor.
+
+## Kesimpulan
+Setelah melakukan analisis dan pemodelan data, beberapa poin penting dapat disimpulkan:
+- Model Random Forest yang digunakan menunjukkan kinerja yang sangat baik dengan akurasi sebesar 97.5%.
+- Fitur-fitur seperti usia motor, harga per kilometer, dan efisiensi pajak memiliki pengaruh yang signifikan terhadap prediksi jenis sepeda motor.
+- Pra-pemrosesan data yang komprehensif, termasuk penambahan fitur baru dan encoding variabel kategorikal, sangat penting untuk meningkatkan performa model.
+- Hasil ini menunjukkan bahwa model prediktif ini memiliki potensi untuk digunakan dalam membantu penjual dan pembeli sepeda motor bekas dalam membuat keputusan yang lebih baik berdasarkan data yang ada.
